@@ -6,6 +6,10 @@ This document explores backend-oriented agent architectures built with Koog 1.0 
 
 The focus is on orchestration patterns, observability, scalability, and integration with existing backend services.
 
+## High-Level Architecture
+
+![Koog 1.0 High-Level Architecture](assets/koog-high-level-architecture.png)
+
 ## Areas of Interest
 
 * Ktor integration patterns
