@@ -6,15 +6,15 @@ This document provides a high-level view of the architectural ideas explored thr
 
 The current blueprints include:
 
-- [Edge Agent](./docs/edge-agent.md)
-- [Infrastructure Middleware](./docs/infrastructure-middleware.md)
-- [Observability](./docs/observability.md)
+- [Edge Agent](./edge-agent.md)
+- [Infrastructure Middleware](./infrastructure-middleware.md)
+- [Observability](./observability.md)
 
 ---
 
 # Purpose
 
-This repository explores architectural patterns for building AI agents with Koog beyond simple prompt-response workflows.
+This repository explores architectural patterns for building AI agent systems with Koog beyond simple prompt-response workflows.
 
 Rather than focusing on individual APIs or model providers, the goal is to examine how agent systems can be designed to be modular, observable, secure, and maintainable as they become part of larger JVM applications.
 
@@ -24,11 +24,11 @@ The blueprints in this repository intentionally take an **architecture-first app
 
 # Repository Architecture
 
-![Koog Community Blueprints Architecture](./docs/assets/koog-high-level-architecture.png)
+![Koog Community Blueprints Architecture](./assets/koog-high-level-architecture.png)
 
 The repository currently explores three complementary areas.
 
-```
+```text
                  User / Application
                          │
                          ▼
@@ -53,7 +53,7 @@ Together, these blueprints illustrate how agent systems can separate user intera
 
 See:
 
-- [Edge Agent Blueprint](./docs/edge-agent.md)
+- [Edge Agent Blueprint](./edge-agent.md)
 
 The Edge Agent blueprint explores local-first execution patterns.
 
@@ -75,7 +75,7 @@ The objective is to understand where agent capabilities can safely execute close
 
 See:
 
-- [Infrastructure Middleware Blueprint](./docs/infrastructure-middleware.md)
+- [Infrastructure Middleware Blueprint](./infrastructure-middleware.md)
 
 Most production systems require additional infrastructure between an application and the language model.
 
@@ -98,7 +98,7 @@ The middleware acts as the engineering layer that connects Koog agents with exis
 
 See:
 
-- [Observability Blueprint](./docs/observability.md)
+- [Observability Blueprint](./observability.md)
 
 Agent behaviour becomes increasingly difficult to understand as workflows become more autonomous.
 
@@ -189,4 +189,4 @@ As the repository evolves, architecture documents will gradually be complemented
 
 This repository is an independent community project created for architectural exploration, education, and experimentation.
 
-It is **not** an official JetBrains or Koog project and is not endorsed or maintained by JetBrains.
+It is **not** affiliated with, endorsed by, or maintained by JetBrains or the official Koog project.
