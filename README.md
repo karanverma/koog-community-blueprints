@@ -1,53 +1,189 @@
 # Koog Community Blueprints
 
-Community blueprints and architecture notes exploring Koog 1.0 agent patterns, observability, and edge AI architectures.
+> Architecture-first blueprints for building secure, observable, and maintainable AI agent systems with Koog.
 
-## Overview
+An independent community project exploring architectural patterns, engineering guidance, and practical engineering patterns for building AI agents with Koog beyond simple prompt-response workflows.
 
-This repository collects architecture ideas, implementation notes, and reference blueprints inspired by the Koog 1.0 release.
+---
 
-The goal is to explore practical approaches to building AI agents with Kotlin, with a particular focus on stability, observability, deployment patterns, and real-world developer workflows.
+# Overview
 
-Rather than serving as a production framework, this repository is intended as a space for documenting ideas, experiments, and implementation approaches that may help developers evaluate architectural approaches and implementation patterns around Koog.
+This repository explores how AI agent systems can be designed to be modular, observable, secure, and maintainable within JVM applications.
 
-## Planned Blueprints
+Rather than focusing on specific APIs or model providers, the goal is to examine architectural patterns, operational concerns, and engineering trade-offs that emerge as agent systems become part of larger software platforms.
 
-### Edge Agent
+The repository is intended as a community resource for engineers, researchers, and developers interested in exploring production-oriented Koog-based agent architectures.
 
-A local-first architecture exploring:
+---
 
-* Kotlin Multiplatform
-* LiteRT integrations
-* On-device AI inference
-* Privacy-focused workflows
-* Offline and edge deployment scenarios
+# Repository Structure
 
-### Infrastructure Middleware
+```text
+docs/
+├── architecture-overview.md
+├── edge-agent.md
+├── infrastructure-middleware.md
+├── observability.md
+├── evaluation-checklist.md
+├── threat-model.md
+└── assets/
+    └── koog-high-level-architecture.png
+```
 
-A backend-focused architecture exploring:
+Repository-level documentation:
 
-* Ktor and Spring Boot integration patterns
-* Agent orchestration workflows
-* Prompt management strategies
-* Service-to-service integrations
-* Scalability considerations
+- [Roadmap](ROADMAP.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [License](LICENSE)
 
-### Observability
+---
 
-Patterns for understanding and monitoring agent execution:
+# Repository Blueprints
 
-* OpenTelemetry tracing
-* Metrics collection
-* Workflow inspection
-* Execution debugging
-* Performance monitoring
+## Architecture Overview
 
-## Project Status
+Provides a high-level overview of the repository, its design philosophy, and the relationships between the individual blueprints.
 
-This repository is currently in the exploration and design phase.
+→ [Architecture Overview](docs/architecture-overview.md)
 
-The initial focus is on documenting architecture patterns and implementation approaches inspired by Koog 1.0. Future experiments and reference implementations may be added as the project develops.
+---
 
-## Resources
+## Edge Agent
 
-Links and references will be added as the repository develops.
+Explores local-first agent architectures including:
+
+- LiteRT integration
+- Offline workflows
+- Local model execution
+- Privacy-focused deployments
+- Selective cloud interaction
+
+→ [Edge Agent](docs/edge-agent.md)
+
+---
+
+## Infrastructure Middleware
+
+Explores architectural patterns for integrating agents into JVM applications, including:
+
+- Agent orchestration
+- Authentication
+- Tool management
+- Memory integration
+- Service communication
+- Failure handling
+
+→ [Infrastructure Middleware](docs/infrastructure-middleware.md)
+
+---
+
+## Observability
+
+Explores operational visibility through:
+
+- OpenTelemetry
+- Metrics
+- Tracing
+- Workflow inspection
+- Performance monitoring
+- Debugging
+
+→ [Observability](docs/observability.md)
+
+---
+
+## Evaluation Checklist
+
+A practical checklist for evaluating agent systems before deployment.
+
+Topics include:
+
+- Functional evaluation
+- Reliability
+- Security
+- Observability
+- Performance
+- Deployment readiness
+
+→ [Evaluation Checklist](docs/evaluation-checklist.md)
+
+---
+
+## Threat Model
+
+Introduces high-level security considerations for agent architectures, including:
+
+- Trust boundaries
+- Prompt injection
+- Tool misuse
+- Data exposure
+- Mitigation strategies
+
+→ [Threat Model](docs/threat-model.md)
+
+---
+
+# Design Principles
+
+The repository is guided by several recurring architectural principles:
+
+- Modular system design
+- Explicit architectural boundaries
+- Security by design
+- Observable agent systems
+- Evaluation before deployment
+
+---
+
+# Project Status
+
+This repository currently focuses on:
+
+- Architecture documentation
+- Engineering guidance
+- Community exploration
+
+It does **not** currently provide:
+
+- Production-ready implementations
+- Security guarantees
+- Performance benchmarks
+- Official Koog extensions
+
+Reference implementations and practical engineering examples may be added as the repository evolves.
+
+---
+
+# Roadmap
+
+Planned future work includes:
+
+- Expanded architecture blueprints
+- Reference implementations
+- Example workflows
+- Evaluation tooling
+- Additional engineering guidance
+- JVM framework integrations
+
+See the complete project roadmap:
+
+→ [ROADMAP.md](ROADMAP.md)
+
+---
+
+# Contributing
+
+Ideas, architecture discussions, documentation improvements, and constructive feedback are welcome.
+
+Please read the contribution guidelines before opening a Pull Request.
+
+→ [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+
+# Disclaimer
+
+This repository is an independent community project created for architectural exploration, education, and experimentation.
+
+It is **not** affiliated with, endorsed by, or maintained by JetBrains or the official Koog project.
