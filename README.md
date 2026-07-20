@@ -2,7 +2,7 @@
 
 > Architecture-first blueprints for building secure, observable, and maintainable AI agent systems with Koog.
 
-An independent community project exploring architectural patterns, engineering guidance, and practical engineering patterns for building AI agents with Koog beyond simple prompt-response workflows.
+An independent community project exploring architectural patterns, implementation guidance, and practical engineering approaches for building AI agents with Koog beyond simple prompt-response workflows.
 
 ---
 
