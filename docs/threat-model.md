@@ -1,24 +1,41 @@
 # Threat Model
 
-This document outlines common security considerations for Koog-based agent systems.
+## Purpose
 
-The goal is not to provide a complete security framework, but to encourage early architectural thinking about risks, trust boundaries, and defensive design decisions.
+This blueprint explores architectural considerations for identifying trust boundaries, understanding common risks, and designing secure AI agent systems built with Koog.
+
+Rather than providing a comprehensive security framework, it encourages security-first architectural thinking throughout the design and development lifecycle.
 
 ---
 
-# Security Objectives
+## Motivation
 
-A secure agent system should aim to:
+AI agents increasingly interact with language models, external tools, APIs, persistent memory, and enterprise systems. These capabilities introduce additional trust boundaries and potential attack surfaces beyond those found in traditional software systems.
+
+A structured threat model helps developers identify risks early, design appropriate mitigations, and reduce the likelihood of security failures as systems evolve.
+
+Primary objectives include:
 
 - Protect sensitive data
-- Restrict tool access
-- Prevent unauthorized actions
+- Restrict unnecessary capabilities
 - Maintain system integrity
-- Support auditing and incident investigation
+- Support auditing and incident response
+- Reduce operational risk
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
+
+```mermaid
+flowchart LR
+
+User --> Agent
+Agent --> Model[Language Model]
+Agent --> Tools[External Tools]
+Agent --> Memory[Memory]
+Agent --> Services[External Services]
+Agent --> Infrastructure[Internal Infrastructure]
+```
 
 Typical trust boundaries include:
 
@@ -29,35 +46,39 @@ Typical trust boundaries include:
 - Agent ↔ Memory
 - Agent ↔ Internal Infrastructure
 
-Each boundary should define what information and capabilities are allowed to cross it.
+Each boundary should explicitly define which information, permissions, and capabilities are permitted to cross it.
 
 ---
 
-# Potential Threats
+## Threat Categories
 
-## Prompt Injection
+### Prompt Injection
 
-Risks include:
+Potential risks include:
 
 - Malicious instructions
 - Hidden prompts
 - Tool manipulation
 - Data exfiltration attempts
 
+Prompt injection should be treated as an architectural concern rather than solely a prompt engineering problem.
+
 ---
 
-## Tool Misuse
+### Tool Misuse
 
-Examples include:
+Potential examples include:
 
 - Unauthorized filesystem access
 - Unsafe command execution
 - Excessive API usage
 - Network abuse
 
+Tool access should be constrained according to the principle of least privilege.
+
 ---
 
-## Data Exposure
+### Data Exposure
 
 Sensitive information may include:
 
@@ -67,9 +88,11 @@ Sensitive information may include:
 - Internal documents
 - Conversation history
 
+Appropriate handling of sensitive data should be considered throughout the system lifecycle.
+
 ---
 
-## Model Risks
+### Model Risks
 
 Potential concerns include:
 
@@ -79,22 +102,26 @@ Potential concerns include:
 - Excessive autonomy
 - Memory poisoning
 
+These risks often require layered mitigations rather than relying on model behavior alone.
+
 ---
 
-## External Dependencies
+### External Dependencies
 
-Failures may occur due to:
+Operational failures may arise from:
 
 - API outages
 - Network failures
 - Third-party service changes
 - Dependency vulnerabilities
 
+Systems should be designed to degrade gracefully when external dependencies become unavailable.
+
 ---
 
-# Mitigation Strategies
+## Security Controls
 
-Consider:
+Useful architectural controls include:
 
 - Principle of least privilege
 - Input validation
@@ -105,28 +132,64 @@ Consider:
 - Human approval for sensitive actions
 - Comprehensive logging and monitoring
 
+The specific combination of controls depends on system requirements and risk tolerance.
+
 ---
 
-# Operational Considerations
+## Operational Considerations
 
-Review:
+Security extends beyond application design.
+
+Operational practices may include:
 
 - Access controls
-- Audit logs
+- Audit logging
 - Incident response procedures
 - Configuration management
-- Regular dependency updates
+- Dependency management
+- Security reviews
+
+Operational security should evolve alongside the system as new capabilities and integrations are introduced.
 
 ---
 
-# Current Scope
+## Current Scope
 
-This document provides high-level architectural guidance.
+This blueprint currently focuses on:
 
-It does not replace formal security reviews, penetration testing, compliance requirements, or organization-specific threat modelling processes.
+- Trust boundaries
+- Threat categories
+- High-level mitigation strategies
+- Security architecture
+
+It does **not** currently include:
+
+- Formal threat modelling methodologies
+- Penetration testing
+- Compliance requirements
+- Organization-specific security processes
 
 ---
 
-# Future Work
+## Future Work
 
-Future versions may include example attack scenarios, threat modelling templates, reference architectures, and practical mitigation patterns for production-ready Koog agent systems.
+Future iterations may explore:
+
+- Example attack scenarios
+- Threat modelling templates
+- Reference security architectures
+- Runtime policy enforcement
+- Agent sandboxing strategies
+- Practical mitigation patterns
+
+---
+
+## Related Documents
+
+| Document | Description |
+|-----------|-------------|
+| [Architecture Overview](./architecture-overview.md) | Repository-wide architecture and design philosophy. |
+| [Edge Agent](./edge-agent.md) | On-device AI agent architecture patterns. |
+| [Infrastructure Middleware](./infrastructure-middleware.md) | Backend orchestration and middleware architecture. |
+| [Observability](./observability.md) | Monitoring, tracing, logging, and runtime visibility. |
+| [Evaluation Checklist](./evaluation-checklist.md) | Guidance for evaluating architecture, reliability, and operational readiness. |
