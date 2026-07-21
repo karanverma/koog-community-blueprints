@@ -2,7 +2,7 @@
 
 > Architecture-first blueprints for building secure, observable, and maintainable AI agent systems with Koog.
 
-An independent community project exploring architectural patterns, implementation guidance, and practical engineering approaches for building AI agents with Koog beyond simple prompt-response workflows.
+An independent community project exploring architectural patterns, engineering guidance, and practical engineering practices for building AI agents with Koog beyond simple prompt-response workflows.
 
 ---
 
@@ -16,27 +16,36 @@ The repository is intended as a community resource for engineers, researchers, a
 
 ---
 
+## Who is this for?
+
+This repository is intended for:
+
+- JVM developers building AI agent systems
+- Engineers exploring Koog architecture
+- Researchers interested in agent engineering
+- Contributors interested in architecture-first design
+
+---
+
 # Repository Structure
 
 ```text
-docs/
-├── architecture-overview.md
-├── edge-agent.md
-├── infrastructure-middleware.md
-├── observability.md
-├── evaluation-checklist.md
-├── threat-model.md
-└── assets/
-    └── koog-high-level-architecture.png
+.
+├── docs/
+│   ├── architecture-overview.md
+│   ├── edge-agent.md
+│   ├── infrastructure-middleware.md
+│   ├── observability.md
+│   ├── evaluation-checklist.md
+│   ├── threat-model.md
+│   └── assets/
+│       └── koog-high-level-architecture.png
+├── README.md
+├── ROADMAP.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── LICENSE
 ```
-
-Repository-level documentation:
-
-- [Roadmap](ROADMAP.md)
-- [Contributing](CONTRIBUTING.md)
-- [Security Policy](SECURITY.md)
-- [License](LICENSE)
-
 ---
 
 # Repository Blueprints
