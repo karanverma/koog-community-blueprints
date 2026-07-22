@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation("ai.koog:koog-agents:1.0.0")
+    implementation("ai.koog:koog-agents-additions:1.0.0-beta")
 }
 
 java {
@@ -26,9 +27,4 @@ kotlin {
 
 application {
     mainClass.set("MainKt")
-}
-
-dependencies {
-    implementation("ai.koog:koog-agents:1.0.0")
-    implementation("ai.koog:koog-agents-additions:1.0.0-beta")
 }
