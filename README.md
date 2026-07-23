@@ -216,7 +216,7 @@ Planned future work includes:
 - Runtime policy enforcement
 - Multi-agent workflows
 - Observability reference implementations
-- Evaluation workflows
+- Evaluation tooling
 - JVM framework integrations
 
 See the complete project roadmap:
