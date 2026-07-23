@@ -51,6 +51,7 @@ This repository is intended for:
 ├── ROADMAP.md
 └── SECURITY.md
 ```
+
 ---
 
 # Repository Contents
@@ -58,8 +59,6 @@ This repository is intended for:
 ## Examples
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
-
-## Minimal Koog Agent
 
 A standalone Kotlin example demonstrating:
 
@@ -70,6 +69,7 @@ A standalone Kotlin example demonstrating:
 - GitHub Actions build validation
 
 → [Minimal Koog Agent](examples/01-minimal-agent)
+
 
 ## Architecture Overview
 
