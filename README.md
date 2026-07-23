@@ -31,24 +31,48 @@ This repository is intended for:
 
 ```text
 .
+├── .github/
+│   └── workflows/
 ├── docs/
+│   ├── assets/
+│   │   ├── koog-high-level-architecture.png
+│   │   └── request-lifecycle.png
 │   ├── architecture-overview.md
 │   ├── edge-agent.md
+│   ├── evaluation-checklist.md
 │   ├── infrastructure-middleware.md
 │   ├── observability.md
-│   ├── evaluation-checklist.md
-│   ├── threat-model.md
-│   └── assets/
-│       └── koog-high-level-architecture.png
+│   └── threat-model.md
+├── examples/
+│   └── 01-minimal-agent/
+├── CONTRIBUTING.md
+├── LICENSE
 ├── README.md
 ├── ROADMAP.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-└── LICENSE
+└── SECURITY.md
 ```
+
 ---
 
-# Repository Blueprints
+# Repository Contents
+
+## Examples
+
+Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
+
+### Minimal Koog Agent
+
+A standalone Kotlin example demonstrating:
+
+- Koog agent initialization
+- OpenAI integration
+- Gradle project setup
+- Local development workflow
+- GitHub Actions build validation
+
+→ [Minimal Koog Agent](examples/01-minimal-agent)
+
+---
 
 ## Architecture Overview
 
@@ -152,6 +176,7 @@ This repository currently focuses on:
 - Architecture documentation
 - Engineering guidance
 - Community exploration
+- Runnable reference examples
 
 It does **not** currently provide:
 
@@ -160,7 +185,7 @@ It does **not** currently provide:
 - Performance benchmarks
 - Official Koog extensions
 
-Reference implementations and practical engineering examples may be added as the repository evolves.
+The repository currently includes an introductory runnable example and will continue to expand with additional reference implementations and engineering examples.
 
 ---
 
@@ -169,7 +194,7 @@ Reference implementations and practical engineering examples may be added as the
 Planned future work includes:
 
 - Expanded architecture blueprints
-- Reference implementations
+- Additional reference implementations
 - Example workflows
 - Evaluation tooling
 - Additional engineering guidance
