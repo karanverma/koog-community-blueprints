@@ -60,8 +60,6 @@ This repository is intended for:
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
 
-### Minimal Koog Agent
-
 A standalone Kotlin example demonstrating:
 
 - Koog agent initialization
@@ -72,7 +70,6 @@ A standalone Kotlin example demonstrating:
 
 → [Minimal Koog Agent](examples/01-minimal-agent)
 
----
 
 ## Architecture Overview
 
