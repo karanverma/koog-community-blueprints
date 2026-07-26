@@ -1,13 +1,13 @@
-name: Minimal Agent Build
+name: Example Builds
 
 on:
   push:
     paths:
-      - "examples/01-minimal-agent/**"
+      - "examples/**"
       - ".github/workflows/minimal-agent-build.yml"
   pull_request:
     paths:
-      - "examples/01-minimal-agent/**"
+      - "examples/**"
       - ".github/workflows/minimal-agent-build.yml"
 
 permissions:
@@ -17,9 +17,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: examples/01-minimal-agent
+    strategy:
+      matrix:
+        example:
+          - 01-minimal-agent
+          - 02-safe-tool-agent
+          - 03-guarded-tool-agent
 
     steps:
       - name: Check out repository
@@ -31,10 +34,11 @@ jobs:
           distribution: temurin
           java-version: "17"
           cache: gradle
-          cache-dependency-path: examples/01-minimal-agent/**/*.gradle*
+          cache-dependency-path: examples/${{ matrix.example }}/**/*.gradle*
 
       - name: Make Gradle wrapper executable
-        run: chmod +x gradlew
+        run: chmod +x examples/${{ matrix.example }}/gradlew
 
-      - name: Build minimal agent
+      - name: Build example
+        working-directory: examples/${{ matrix.example }}
         run: ./gradlew clean build --no-daemon

@@ -32,6 +32,7 @@ Planned areas of focus include:
 - Add engineering examples
 - Refine evaluation guidance
 - Expand threat modelling scenarios
+- Continue expanding guarded execution patterns and approval workflows
 
 ---
 
@@ -47,6 +48,7 @@ Potential future directions include:
 - Evaluation tooling
 - Secure deployment examples
 - Integration with common JVM frameworks
+- Richer policy engines and distributed approval flows
 
 ---
 

@@ -45,7 +45,8 @@ This repository is intended for:
 │   └── threat-model.md
 ├── examples/
 │   ├── 01-minimal-agent/
-│   └── 02-safe-tool-agent/
+│   ├── 02-safe-tool-agent/
+│   └── 03-guarded-tool-agent/
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
@@ -61,15 +62,11 @@ This repository is intended for:
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
 
+Three runnable examples are currently included:
+
 ### Minimal Koog Agent
 
-A standalone Kotlin example demonstrating:
-
-- Koog agent initialization
-- OpenAI integration
-- Gradle project setup
-- Local development workflow
-- GitHub Actions build validation
+A standalone Kotlin example demonstrating Koog agent initialization, OpenAI integration, and a simple local workflow.
 
 → [Minimal Koog Agent](examples/01-minimal-agent)
 
@@ -89,6 +86,12 @@ Highlights include:
 - Unit tests
 
 → [Safe Workspace Tools](examples/02-safe-tool-agent)
+
+### Guarded Tool Agent
+
+A guarded tool example demonstrating deterministic policy enforcement, approval gating, structured auditing, and a minimal Koog adapter around workspace operations.
+
+→ [Guarded Tool Agent](examples/03-guarded-tool-agent)
 
 ---
 
