@@ -2,7 +2,7 @@
 
 > Architecture-first blueprints for building secure, observable, and maintainable AI agent systems with Koog.
 
-An independent community project exploring architectural patterns, engineering guidance, and practical engineering practices for building AI agents with Koog beyond simple prompt-response workflows.
+An independent community project exploring architectural patterns, engineering guidance, and practical reference implementations for building AI agent systems with Koog beyond simple prompt-response workflows.
 
 ---
 
@@ -12,7 +12,7 @@ This repository explores how AI agent systems can be designed to be modular, obs
 
 Rather than focusing on specific APIs or model providers, the goal is to examine architectural patterns, operational concerns, and engineering trade-offs that emerge as agent systems become part of larger software platforms.
 
-The repository is intended as a community resource for engineers, researchers, and developers interested in exploring production-oriented Koog-based agent architectures.
+The repository is intended as a community resource for engineers, researchers, and developers interested in production-oriented Koog-based agent architectures.
 
 ---
 
@@ -45,6 +45,7 @@ This repository is intended for:
 │   └── threat-model.md
 ├── examples/
 │   ├── 01-minimal-agent/
+│   ├── 02-safe-tool-agent/
 │   └── 03-guarded-tool-agent/
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -61,14 +62,38 @@ This repository is intended for:
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
 
-Two runnable examples are currently included:
+Three runnable examples are currently included:
 
-- A standalone Kotlin example demonstrating Koog agent initialization, OpenAI integration, and a simple local workflow.
-- A guarded tool example demonstrating deterministic policy enforcement, approval gating, structured auditing, and a minimal Koog adapter around workspace operations.
+### Minimal Koog Agent
+
+A standalone Kotlin example demonstrating Koog agent initialization, OpenAI integration, and a simple local workflow.
 
 → [Minimal Koog Agent](examples/01-minimal-agent)
 
+### Safe Workspace Tools
+
+A runnable Kotlin example demonstrating policy-enforced filesystem operations for AI agents and tool-calling systems.
+
+Highlights include:
+
+- Workspace boundary enforcement
+- Path traversal prevention
+- Hidden file blocking
+- Sensitive filename protection
+- Symbolic-link escape prevention
+- Explicit deletion confirmation
+- Runnable demo
+- Unit tests
+
+→ [Safe Workspace Tools](examples/02-safe-tool-agent)
+
+### Guarded Tool Agent
+
+A guarded tool example demonstrating deterministic policy enforcement, approval gating, structured auditing, and a minimal Koog adapter around workspace operations.
+
 → [Guarded Tool Agent](examples/03-guarded-tool-agent)
+
+---
 
 ## Architecture Overview
 
@@ -160,6 +185,7 @@ The repository is guided by several recurring architectural principles:
 - Modular system design
 - Explicit architectural boundaries
 - Security by design
+- Secure tool execution
 - Observable agent systems
 - Evaluation before deployment
 
@@ -181,7 +207,7 @@ It does **not** currently provide:
 - Performance benchmarks
 - Official Koog extensions
 
-The repository currently includes introductory runnable examples and will continue to expand with additional reference implementations and engineering examples.
+The repository currently includes multiple runnable reference examples alongside architecture documentation and will continue expanding with additional engineering patterns and implementation guides.
 
 ---
 
@@ -189,11 +215,11 @@ The repository currently includes introductory runnable examples and will contin
 
 Planned future work includes:
 
-- Expanded architecture blueprints
-- Additional reference implementations
-- Example workflows
+- Additional secure tool examples
+- Runtime policy enforcement
+- Multi-agent workflows
+- Observability reference implementations
 - Evaluation tooling
-- Additional engineering guidance
 - JVM framework integrations
 
 See the complete project roadmap:
@@ -204,7 +230,7 @@ See the complete project roadmap:
 
 # Contributing
 
-Ideas, architecture discussions, documentation improvements, and constructive feedback are welcome.
+Ideas, architecture discussions, documentation improvements, runnable examples, and constructive feedback are welcome.
 
 Please read the contribution guidelines before opening a Pull Request.
 
