@@ -10,10 +10,13 @@ data class AuditEvent(
     val target: String,
     val risk: ActionRisk,
     val policyDecision: GuardDecision,
-    val policyReason: String,
+    val reason: String,
+    val matchedRuleIds: List<String>,
     val approvalRequested: Boolean,
-    val approvalResult: Boolean?,
-    val executionResult: String
+    val approvalGranted: Boolean?,
+    val executionOutcome: String,
+    val executionResult: String = executionOutcome,
+    val policyReason: String = reason
 )
 
 interface AuditSink {
@@ -22,7 +25,7 @@ interface AuditSink {
 
 class ConsoleAuditSink : AuditSink {
     override fun record(event: AuditEvent) {
-        println("AUDIT ${event.eventId} ${event.policyDecision} ${event.executionResult}")
+        println("AUDIT ${event.eventId} ${event.policyDecision} ${event.executionOutcome}")
     }
 }
 

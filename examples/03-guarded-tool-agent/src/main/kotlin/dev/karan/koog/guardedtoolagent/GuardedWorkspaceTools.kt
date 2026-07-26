@@ -87,10 +87,11 @@ class GuardedWorkspaceTools(
                 target = action.targetPath,
                 risk = risk,
                 policyDecision = decision.decision,
-                policyReason = decision.reason,
+                reason = decision.reason,
+                matchedRuleIds = decision.matchedRuleIds,
                 approvalRequested = false,
-                approvalResult = null,
-                executionResult = "denied"
+                approvalGranted = null,
+                executionOutcome = "denied"
             ))
             throw GuardPolicyException(decision.reason)
         }
@@ -101,10 +102,11 @@ class GuardedWorkspaceTools(
                 target = action.targetPath,
                 risk = risk,
                 policyDecision = decision.decision,
-                policyReason = decision.reason,
+                reason = decision.reason,
+                matchedRuleIds = decision.matchedRuleIds,
                 approvalRequested = true,
-                approvalResult = false,
-                executionResult = "rejected"
+                approvalGranted = false,
+                executionOutcome = "rejected"
             ))
             return false as T
         }
@@ -116,10 +118,11 @@ class GuardedWorkspaceTools(
             target = action.targetPath,
             risk = risk,
             policyDecision = decision.decision,
-            policyReason = decision.reason,
+            reason = decision.reason,
+            matchedRuleIds = decision.matchedRuleIds,
             approvalRequested = approvalRequested,
-            approvalResult = approvalResult,
-            executionResult = "executed"
+            approvalGranted = approvalResult,
+            executionOutcome = "executed"
         ))
         return result
     }

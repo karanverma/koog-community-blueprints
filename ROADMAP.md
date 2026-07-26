@@ -32,7 +32,11 @@ Planned areas of focus include:
 - Add engineering examples
 - Refine evaluation guidance
 - Expand threat modelling scenarios
-- Continue expanding guarded execution patterns and approval workflows
+- Continue extending guarded execution patterns and approval workflows
+
+## Completed Milestones
+
+- A focused runtime policy engine for the guarded tool agent now exists as a reusable, deterministic example implementation with composable rules, explicit precedence, approval gating, and structured audit output.
 
 ---
 
