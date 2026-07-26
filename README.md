@@ -44,7 +44,8 @@ This repository is intended for:
 │   ├── observability.md
 │   └── threat-model.md
 ├── examples/
-│   └── 01-minimal-agent/
+│   ├── 01-minimal-agent/
+│   └── 03-guarded-tool-agent/
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
@@ -60,16 +61,14 @@ This repository is intended for:
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
 
-A standalone Kotlin example demonstrating:
+Two runnable examples are currently included:
 
-- Koog agent initialization
-- OpenAI integration
-- Gradle project setup
-- Local development workflow
-- GitHub Actions build validation
+- A standalone Kotlin example demonstrating Koog agent initialization, OpenAI integration, and a simple local workflow.
+- A guarded tool example demonstrating deterministic policy enforcement, approval gating, structured auditing, and a minimal Koog adapter around workspace operations.
 
 → [Minimal Koog Agent](examples/01-minimal-agent)
 
+→ [Guarded Tool Agent](examples/03-guarded-tool-agent)
 
 ## Architecture Overview
 
@@ -182,7 +181,7 @@ It does **not** currently provide:
 - Performance benchmarks
 - Official Koog extensions
 
-The repository currently includes an introductory runnable example and will continue to expand with additional reference implementations and engineering examples.
+The repository currently includes introductory runnable examples and will continue to expand with additional reference implementations and engineering examples.
 
 ---
 
