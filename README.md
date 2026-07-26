@@ -2,9 +2,24 @@
 
 > Architecture-first blueprints for building secure, observable, and maintainable AI agent systems with Koog.
 
-An independent community project exploring architectural patterns, engineering guidance, and practical reference implementations for building AI agent systems with Koog beyond simple prompt-response workflows.
+An independent community project exploring secure, observable, and production-oriented AI agent architectures through runnable Kotlin examples, engineering guidance, and practical reference implementations.
+
+## Repository Highlights
+
+- Runnable Kotlin examples built with Koog
+- Runtime policy enforcement for AI agent tools
+- Secure workspace filesystem patterns
+- Architecture-first engineering guidance
+- Threat modeling and observability documentation
+- Practical evaluation checklist for agent systems
 
 ---
+
+<p align="center">
+  <img src="docs/assets/koog-high-level-architecture.png"
+       alt="Koog Community Blueprints Architecture"
+       width="900">
+</p>
 
 # Overview
 
@@ -24,6 +39,18 @@ This repository is intended for:
 - Engineers exploring Koog architecture
 - Researchers interested in agent engineering
 - Contributors interested in architecture-first design
+
+---
+
+# Quick Start
+
+```bash
+git clone https://github.com/karanverma/koog-community-blueprints.git
+cd koog-community-blueprints
+./gradlew test
+```
+
+Explore the runnable examples under `examples/` and the architecture guides under `docs/`.
 
 ---
 
