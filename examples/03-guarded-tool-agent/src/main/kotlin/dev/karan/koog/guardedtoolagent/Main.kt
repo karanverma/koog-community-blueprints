@@ -7,40 +7,25 @@ fun main() {
     Files.writeString(workspace.resolve("notes.txt"), "This file is inside the permitted workspace.")
     Files.writeString(workspace.resolve("safe.md"), "A safe markdown note.")
 
+    val auditSink = InMemoryAuditSink()
     val tools = GuardedWorkspaceTools(
         workspaceRoot = workspace,
         approvalGateway = ConsoleApprovalGateway(),
-        auditSink = ConsoleAuditSink()
+        auditSink = auditSink
     )
 
     println("Workspace: $workspace")
     println()
 
-    println("1) List files")
-    println(tools.list("."))
-    println()
-
-    println("2) Read safe file")
+    println("1) Allowed operation")
     println(tools.read("notes.txt"))
     println()
 
-    println("3) Write requiring approval")
-    try {
-        println("Written: ${tools.write("draft.txt", "awaiting approval")}")
-    } catch (error: GuardPolicyException) {
-        println("Blocked: ${error.message}")
-    }
+    println("2) Confirmation required")
+    println("Write result: ${tools.write("draft.txt", "awaiting approval")}")
     println()
 
-    println("4) Delete requiring approval")
-    try {
-        println("Deleted: ${tools.delete("safe.md")}")
-    } catch (error: GuardPolicyException) {
-        println("Blocked: ${error.message}")
-    }
-    println()
-
-    println("5) Traversal denial")
+    println("3) Denied operation")
     try {
         tools.read("../secret.txt")
     } catch (error: GuardPolicyException) {
@@ -48,18 +33,8 @@ fun main() {
     }
     println()
 
-    println("6) Hidden-file denial")
-    try {
-        tools.read(".env")
-    } catch (error: GuardPolicyException) {
-        println("Blocked: ${error.message}")
-    }
-    println()
-
-    println("7) Sensitive-file denial")
-    try {
-        tools.read("credentials.json")
-    } catch (error: GuardPolicyException) {
-        println("Blocked: ${error.message}")
+    println("4) Audit trail")
+    auditSink.events.forEach { event ->
+        println("- ${event.action} -> ${event.policyDecision} / ${event.executionOutcome} / ${event.reason}")
     }
 }

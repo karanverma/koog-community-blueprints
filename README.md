@@ -89,7 +89,7 @@ Highlights include:
 
 ### Guarded Tool Agent
 
-A guarded tool example demonstrating deterministic policy enforcement, approval gating, structured auditing, and a minimal Koog adapter around workspace operations.
+A guarded tool example demonstrating a reusable runtime policy engine, approval gating, structured auditing, and a minimal Koog adapter around workspace operations. The implementation stays deterministic and composable without depending on an LLM for authorization decisions.
 
 → [Guarded Tool Agent](examples/03-guarded-tool-agent)
 

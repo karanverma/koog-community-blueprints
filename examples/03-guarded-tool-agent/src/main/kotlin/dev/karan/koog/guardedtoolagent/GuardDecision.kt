@@ -8,5 +8,8 @@ enum class GuardDecision {
 
 data class GuardDecisionResult(
     val decision: GuardDecision,
-    val reason: String
+    val reason: String,
+    val ruleId: String? = null,
+    val matchedRuleIds: List<String> = emptyList(),
+    val requiresConfirmation: Boolean = decision == GuardDecision.CONFIRM
 )
