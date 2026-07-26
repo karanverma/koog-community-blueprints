@@ -169,6 +169,18 @@ class RuntimePolicyEngineTest {
         val sensitive = policy.evaluate(GuardedAction("read", "credentials.json"))
         assertEquals(GuardDecision.DENY, sensitive.decision)
 
+        val nestedSensitive = policy.evaluate(GuardedAction("read", "folder/credentials.json"))
+        assertEquals(GuardDecision.DENY, nestedSensitive.decision)
+
+        val sensitiveParent = policy.evaluate(GuardedAction("read", "credentials.json/notes.txt"))
+        assertEquals(GuardDecision.DENY, sensitiveParent.decision)
+
+        val mixedCaseSensitive = policy.evaluate(GuardedAction("read", "safe/SECRETS.TXT/data.txt"))
+        assertEquals(GuardDecision.DENY, mixedCaseSensitive.decision)
+
+        val ordinaryNested = policy.evaluate(GuardedAction("read", "safe/docs/notes.txt"))
+        assertEquals(GuardDecision.ALLOW, ordinaryNested.decision)
+
         val escaped = policy.evaluate(GuardedAction("read", "linked"))
         assertEquals(GuardDecision.DENY, escaped.decision)
     }

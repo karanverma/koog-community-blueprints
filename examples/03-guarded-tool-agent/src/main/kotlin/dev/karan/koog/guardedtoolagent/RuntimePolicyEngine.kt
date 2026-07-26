@@ -108,8 +108,15 @@ class SensitiveFileRule(private val blockedNames: Set<String>) : PolicyRule {
 
     override fun evaluate(context: PolicyContext): PolicyEvaluation? {
         val candidate = context.candidatePath ?: return null
-        val names = candidate.fileName?.toString()?.let { listOf(it) } ?: emptyList()
-        return if (names.any { it.lowercase() in blockedNames }) {
+        val workspaceRoot = context.workspaceRoot ?: return null
+
+        val relativeSegments = try {
+            workspaceRoot.relativize(candidate).map { it.toString() }
+        } catch (_: IllegalArgumentException) {
+            return null
+        }
+
+        return if (relativeSegments.any { it.lowercase() in blockedNames }) {
             PolicyEvaluation(GuardDecision.DENY, "Sensitive filename is blocked", id)
         } else {
             null
