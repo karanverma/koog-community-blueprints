@@ -4,7 +4,6 @@ import java.nio.file.Files
 import java.nio.file.InvalidPathException
 import java.nio.file.LinkOption
 import java.nio.file.Path
-import java.nio.file.Paths
 
 interface PolicyRule {
     val id: String
@@ -29,7 +28,11 @@ data class PolicyEvaluation(
 
 class RuntimePolicyEngine(private val rules: List<PolicyRule>) {
     fun evaluate(context: PolicyContext): PolicyEvaluation {
-        val evaluations = rules.mapNotNull { it.evaluate(context) }
+        val evaluations = rules.mapIndexedNotNull { index, rule ->
+            rule.evaluate(context)?.let { evaluation ->
+                evaluation to index
+            }
+        }
         if (evaluations.isEmpty()) {
             return PolicyEvaluation(
                 decision = GuardDecision.DENY,
@@ -42,11 +45,12 @@ class RuntimePolicyEngine(private val rules: List<PolicyRule>) {
         }
 
         val selected = evaluations
-            .sortedWith(compareByDescending<PolicyEvaluation> { precedence(it.decision) }.thenBy { it.ruleId })
+            .sortedWith(compareByDescending<Pair<PolicyEvaluation, Int>> { precedence(it.first.decision) }.thenBy { it.second })
             .first()
+            .first
 
         return selected.copy(
-            matchedRuleIds = evaluations.map { it.ruleId }.distinct(),
+            matchedRuleIds = evaluations.map { it.first.ruleId }.distinct(),
             requiresConfirmation = selected.decision == GuardDecision.CONFIRM
         )
     }
@@ -78,9 +82,9 @@ class WorkspaceBoundaryRule(private val workspaceRoot: Path) : PolicyRule {
             return PolicyEvaluation(GuardDecision.DENY, "Absolute paths are not allowed", id)
         }
 
-        val candidatePath = workspaceRoot.resolve(suppliedPath).normalize()
+        val candidatePath = context.candidatePath ?: workspaceRoot.resolve(suppliedPath).normalize()
         return if (!candidatePath.startsWith(workspaceRoot)) {
-            PolicyEvaluation(GuardDecision.DENY, "Path escapes the permitted workspace", id)
+            PolicyEvaluation(GuardDecision.DENY, "Path traversal escapes the permitted workspace", id)
         } else {
             null
         }
@@ -93,8 +97,15 @@ class HiddenPathRule : PolicyRule {
 
     override fun evaluate(context: PolicyContext): PolicyEvaluation? {
         val candidate = context.candidatePath ?: return null
-        val segmentNames = candidate.toString().split(Paths.get("/").toString()).filter { it.isNotBlank() }
-        return if (segmentNames.any { it.startsWith(".") }) {
+        val workspaceRoot = context.workspaceRoot ?: return null
+
+        val relativeSegments = try {
+            workspaceRoot.relativize(candidate).map { it.toString() }
+        } catch (_: IllegalArgumentException) {
+            return null
+        }
+
+        return if (relativeSegments.any { it.startsWith(".") }) {
             PolicyEvaluation(GuardDecision.DENY, "Hidden files and directories are blocked", id)
         } else {
             null

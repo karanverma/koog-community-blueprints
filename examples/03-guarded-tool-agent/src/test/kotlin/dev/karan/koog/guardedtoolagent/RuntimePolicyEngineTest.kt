@@ -151,7 +151,7 @@ class RuntimePolicyEngineTest {
 
         val traversal = policy.evaluate(GuardedAction("read", "../outside.txt"))
         assertEquals(GuardDecision.DENY, traversal.decision)
-        assertTrue(traversal.reason.contains("traversal", ignoreCase = true) || traversal.reason.contains("workspace", ignoreCase = true))
+        assertTrue(traversal.reason.contains("traversal", ignoreCase = true) || traversal.reason.contains("workspace", ignoreCase = true) || traversal.reason.contains("escapes", ignoreCase = true))
 
         val hidden = policy.evaluate(GuardedAction("read", ".env"))
         assertEquals(GuardDecision.DENY, hidden.decision)

@@ -8,6 +8,7 @@ An independent community project exploring secure, observable, and production-or
 
 - Runnable Kotlin examples built with Koog
 - Runtime policy enforcement for AI agent tools
+- Deterministic safety regression coverage for guarded workflows
 - Secure workspace filesystem patterns
 - Architecture-first engineering guidance
 - Threat modeling and observability documentation
@@ -47,10 +48,11 @@ This repository is intended for:
 ```bash
 git clone https://github.com/karanverma/koog-community-blueprints.git
 cd koog-community-blueprints
+cd examples/03-guarded-tool-agent
 ./gradlew test
 ```
 
-Explore the runnable examples under `examples/` and the architecture guides under `docs/`.
+Each example in `examples/` is a standalone Gradle project. The guarded-tool example includes the runtime policy engine, while the safety regression suite in `examples/04-safety-regression-suite` exercises the same behavior deterministically without requiring LLMs or API keys.
 
 ---
 
@@ -73,7 +75,8 @@ Explore the runnable examples under `examples/` and the architecture guides unde
 ├── examples/
 │   ├── 01-minimal-agent/
 │   ├── 02-safe-tool-agent/
-│   └── 03-guarded-tool-agent/
+│   ├── 03-guarded-tool-agent/
+│   └── 04-safety-regression-suite/
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md

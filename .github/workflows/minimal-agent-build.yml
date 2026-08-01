@@ -23,6 +23,7 @@ jobs:
           - 01-minimal-agent
           - 02-safe-tool-agent
           - 03-guarded-tool-agent
+          - 04-safety-regression-suite
 
     steps:
       - name: Check out repository
