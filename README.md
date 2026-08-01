@@ -2,7 +2,7 @@
 
 > Architecture-first blueprints for building secure, observable, and maintainable AI agent systems with Koog.
 
-An independent community project exploring secure, observable, and production-oriented AI agent architectures through runnable Kotlin examples, engineering guidance, and practical reference implementations.
+An independent community project exploring secure, observable, and engineering-focused AI agent architectures through runnable Kotlin examples, engineering guidance, and practical reference implementations.
 
 ## Repository Highlights
 
@@ -28,7 +28,7 @@ This repository explores how AI agent systems can be designed to be modular, obs
 
 Rather than focusing on specific APIs or model providers, the goal is to examine architectural patterns, operational concerns, and engineering trade-offs that emerge as agent systems become part of larger software platforms.
 
-The repository is intended as a community resource for engineers, researchers, and developers interested in production-oriented Koog-based agent architectures.
+The repository is intended as a community resource for engineers, researchers, and developers interested in engineering-focused Koog-based agent architectures.
 
 ---
 
@@ -77,6 +77,7 @@ Each example in `examples/` is a standalone Gradle project. The guarded-tool exa
 │   ├── 02-safe-tool-agent/
 │   ├── 03-guarded-tool-agent/
 │   └── 04-safety-regression-suite/
+├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
@@ -92,7 +93,7 @@ Each example in `examples/` is a standalone Gradle project. The guarded-tool exa
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
 
-Three runnable examples are currently included:
+Four runnable examples are currently included:
 
 ### Minimal Koog Agent
 
@@ -122,6 +123,23 @@ Highlights include:
 A guarded tool example demonstrating a reusable runtime policy engine, approval gating, structured auditing, and a minimal Koog adapter around workspace operations. The implementation stays deterministic and composable without depending on an LLM for authorization decisions.
 
 → [Guarded Tool Agent](examples/03-guarded-tool-agent)
+
+### Safety Regression Suite
+
+A deterministic regression harness for detecting safety-policy regressions in guarded agent workflows without requiring an LLM or API key.
+
+It includes 20 scenarios covering:
+
+- Safe reads and writes
+- Approval and rejection flows
+- Workspace traversal
+- Hidden paths
+- Sensitive path segments
+- Symbolic-link escapes
+- Policy precedence
+- Post-approval safety rechecks
+
+→ [Safety Regression Suite](examples/04-safety-regression-suite)
 
 ---
 
@@ -237,7 +255,7 @@ It does **not** currently provide:
 - Performance benchmarks
 - Official Koog extensions
 
-The repository currently includes multiple runnable reference examples alongside architecture documentation and will continue expanding with additional engineering patterns and implementation guides.
+The repository currently includes four runnable reference examples, including deterministic runtime policy enforcement and safety regression testing, alongside architecture documentation and engineering guidance.
 
 ---
 
@@ -246,7 +264,6 @@ The repository currently includes multiple runnable reference examples alongside
 Planned future work includes:
 
 - Additional secure tool examples
-- Runtime policy enforcement
 - Multi-agent workflows
 - Observability reference implementations
 - Evaluation tooling
