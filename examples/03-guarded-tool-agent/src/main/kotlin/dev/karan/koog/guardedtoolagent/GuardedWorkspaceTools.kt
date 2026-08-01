@@ -112,6 +112,22 @@ class GuardedWorkspaceTools(
         }
 
         val resolved = resolvePath(action.targetPath)
+        val recheckedDecision = policy.evaluate(action)
+        if (recheckedDecision.decision == GuardDecision.DENY) {
+            recordAudit(event = AuditEvent(
+                action = action.action,
+                target = action.targetPath,
+                risk = risk,
+                policyDecision = recheckedDecision.decision,
+                reason = recheckedDecision.reason,
+                matchedRuleIds = recheckedDecision.matchedRuleIds,
+                approvalRequested = approvalRequested,
+                approvalGranted = approvalResult,
+                executionOutcome = "denied"
+            ))
+            throw GuardPolicyException(recheckedDecision.reason)
+        }
+
         val result = operation(resolved)
         recordAudit(event = AuditEvent(
             action = action.action,

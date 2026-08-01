@@ -34,7 +34,7 @@ class ToolPolicy(private val root: Path) {
         Files.createDirectories(workspaceRoot)
     }
 
-    fun evaluate(action: GuardedAction): GuardDecisionResult {
+    fun evaluate(action: GuardedAction, candidatePathOverride: Path? = null): GuardDecisionResult {
         val normalized = action.targetPath.trim()
         if (normalized.isBlank()) {
             return GuardDecisionResult(GuardDecision.DENY, "The target path must not be blank")
@@ -46,7 +46,7 @@ class ToolPolicy(private val root: Path) {
             return GuardDecisionResult(GuardDecision.DENY, "The target path is invalid")
         }
 
-        val candidate = workspaceRoot.resolve(suppliedPath).normalize()
+        val candidate = candidatePathOverride ?: workspaceRoot.resolve(suppliedPath).normalize()
         val evaluation = engine.evaluate(
             PolicyContext(
                 action = action,
