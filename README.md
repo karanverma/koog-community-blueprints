@@ -9,6 +9,7 @@ An independent community project exploring secure, observable, and engineering-f
 - Runnable Kotlin examples built with Koog
 - Runtime policy enforcement for AI agent tools
 - Deterministic safety regression coverage for guarded workflows
+- Agent capability-diff testing for policy changes
 - Secure workspace filesystem patterns
 - Architecture-first engineering guidance
 - Threat modeling and observability documentation
@@ -76,7 +77,8 @@ Each example in `examples/` is a standalone Gradle project. The guarded-tool exa
 │   ├── 01-minimal-agent/
 │   ├── 02-safe-tool-agent/
 │   ├── 03-guarded-tool-agent/
-│   └── 04-safety-regression-suite/
+│   ├── 04-safety-regression-suite/
+│   └── 05-agent-capability-diff/
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -93,7 +95,7 @@ Each example in `examples/` is a standalone Gradle project. The guarded-tool exa
 
 Runnable examples complement the architecture documentation by demonstrating key Koog concepts in practice.
 
-Four runnable examples are currently included:
+Five runnable examples are currently included:
 
 ### Minimal Koog Agent
 
@@ -140,6 +142,21 @@ It includes 20 scenarios covering:
 - Post-approval safety rechecks
 
 → [Safety Regression Suite](examples/04-safety-regression-suite)
+
+### Agent Capability Diff
+
+A deterministic evaluation pattern for comparing effective authorization decisions across baseline and candidate agent policies.
+
+It identifies:
+
+- Capability expansions
+- Policy tightenings
+- Unchanged behavior
+- Unexpected policy-change outcomes
+
+The comparison uses the real runtime policy engine and does not require an LLM or API key.
+
+→ [Agent Capability Diff](examples/05-agent-capability-diff)
 
 ---
 
@@ -255,7 +272,7 @@ It does **not** currently provide:
 - Performance benchmarks
 - Official Koog extensions
 
-The repository currently includes four runnable reference examples, including deterministic runtime policy enforcement and safety regression testing, alongside architecture documentation and engineering guidance.
+The repository currently includes five runnable reference examples, including deterministic runtime policy enforcement, safety regression testing, and agent capability-diff evaluation, alongside architecture documentation and engineering guidance.
 
 ---
 
