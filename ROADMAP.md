@@ -18,9 +18,9 @@ The repository currently provides:
 - Observability
 - Threat Model
 - Evaluation Checklist
-- Runnable Kotlin examples for minimal, safe, guarded, and regression-driven agent patterns
+- Runnable Kotlin examples for minimal, safe, guarded, regression-driven, and capability-diff agent patterns
 
-The project now includes a production-style guarded tool example plus a deterministic safety regression suite for validating policy behavior without LLMs or API keys.
+The project now includes a production-style guarded tool example, a deterministic safety regression suite, and capability-diff evaluation for comparing policy behavior without requiring LLMs or API keys.
 
 ---
 
@@ -39,6 +39,7 @@ Planned areas of focus include:
 
 - A focused runtime policy engine for the guarded tool agent now exists as a reusable, deterministic example implementation with composable rules, explicit precedence, approval gating, and structured audit output.
 - The v0.5 Safety Regression Suite milestone is now implemented through Example 04, which exercises the guarded-tool policy engine end to end with deterministic scenarios for allow, confirm, deny, traversal, hidden paths, sensitive files, symlink escapes, and post-approval rechecks.
+- The v0.6 Agent Capability Diff milestone is now implemented through Example 05, which compares effective baseline and candidate policy decisions to surface capability expansions, tightenings, and unchanged behavior.
 
 ---
 
